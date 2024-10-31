@@ -1,0 +1,74 @@
+/* PaymentPage.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light background for better contrast */
+    height: 100vh; /* Full viewport height */
+    display: flex; /* Use flexbox to center content */
+    align-items: center; /* Vertically center */
+    justify-content: center; /* Horizontally center */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+h1, p {
+    margin: 0; /* Remove default margins */
+}
+
+.payment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px; /* Space around the payment form */
+    background-color: #fff; /* White background for the form */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 100%; /* Limit width on larger screens */
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 10; 
+    max-width: 400px;
+}
+
+form {
+    width: 100%; /* Make the form take the full width of the container */
+}
+
+button {
+    padding: 10px 15px; /* Padding for the button */
+    border: none;
+    border-radius: 4px;
+    background-color: #5BC0EB; /* Button color */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+    width: 100%; /* Full-width button */
+}
+
+button:hover {
+    background-color: #1B6FBA; /* Darker shade on hover */
+}
+
+p {
+    margin: 10px 0; /* Space around paragraphs */
+    font-size: 14px; /* Standard font size */
+}
+
+.error-message {
+    color: red; /* Red for error messages */
+    margin-top: 10px; /* Space above error messages */
+}
+
+.success-message {
+    color: green; /* Green for success messages */
+    margin-top: 10px; /* Space above success messages */
+}
