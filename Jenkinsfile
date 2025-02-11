@@ -1,65 +1,36 @@
 pipeline {
     agent any
 
-    environment {
-        AWS_ACCESS_KEY_ID = credentials('AKIA2ZIONJOFOG424CVG')
-        AWS_SECRET_ACCESS_KEY = credentials('TkYmFwfjWCDBbXQicj10OPuCbRKXUJ7yNt3O5Mmt')
-        SONARQUBE_URL = 'http://your-sonarqube-server'
-    }
-
     stages {
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
-                echo 'Cloning repository...'
-                git branch: 'main', url: 'https://github.com/Palak4796/task9.2d-sit313.git'
+                git 'https://github.com/YOUR-USERNAME/YOUR-REPO.git' // Replace with your repo URL
             }
         }
 
-        stage('Build') {
+        stage('Install Dependencies') {
             steps {
-                echo 'Building the project...'
-                sh 'mvn clean install'
+                script {
+                    sh 'npm install' // Installs project dependencies
+                }
             }
         }
 
-        stage('Test') {
+        stage('Build React App') {
             steps {
-                echo 'Running tests...'
-                sh 'mvn test'
-            }
-        }
-
-        stage('Code Quality Analysis') {
-            steps {
-                echo 'Running SonarQube analysis...'
-                sh 'mvn sonar:sonar -Dsonar.host.url=$SONARQUBE_URL'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying the project...'
-                sh 'docker build -t myapp .'
-                sh 'docker run -d -p 8080:8080 myapp'
-            }
-        }
-
-        stage('Release') {
-            steps {
-                echo 'Releasing to production...'
-                sh 'docker push myapp:latest'
+                script {
+                    sh 'npm run build' // Generates production-ready build
+                }
             }
         }
     }
 
     post {
         success {
-            echo 'Pipeline completed successfully!'
+            echo "Build completed successfully!"
         }
         failure {
-            echo 'Pipeline failed. Check logs for details.'
+            echo "Build failed!"
         }
     }
 }
-
-
