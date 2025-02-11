@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/YOUR-USERNAME/YOUR-REPO.git' // Replace with your repo URL
+                git 'https://github.com/Palak4796/task9.2d-sit313.git' // Replace with your repo URL
             }
         }
 
